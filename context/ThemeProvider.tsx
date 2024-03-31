@@ -5,15 +5,12 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 interface ThemeContextType {
     mode: string;
     setMode: (mode: string) => void;
-    color: string;
-    setColor: (color: string) => void;
 }
   
 const ThemeContext = createContext<ThemeContextType  | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const [mode, setMode] = useState('');
-    const [color, setColor] = useState('primary');
 
     const handleThemeChange = () => {
         if(
@@ -32,26 +29,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     useEffect(() => {
         handleThemeChange();
     }, [mode])
-
-    // const handleColorChange = () => {
-    //     if(
-    //         localStorage.color === 'dark' || 
-    //         (!("theme" in localStorage) && 
-    //         window.matchMedia("(prefers-color-scheme: dark)").matches)
-    //       ) {
-    //         setMode('dark');
-    //         document.documentElement.classList.add('dark');
-    //       } else {
-    //         setMode('light');
-    //         document.documentElement.classList.remove('dark');
-    //       }
-    // }
-
-    // useEffect(() => {
-    //     handleThemeChange();
-    // }, [color])
+    
     return (
-        <ThemeContext.Provider value={{ mode, setMode,color,setColor }}>
+        <ThemeContext.Provider value={{ mode, setMode }}>
             {children}
         </ThemeContext.Provider>
     )

@@ -15,11 +15,7 @@ export const metadata: Metadata = {
   description: "The best place to share your thoughts and ideas!",
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en">
       <head>
@@ -29,11 +25,12 @@ export default function RootLayout({
         <ClerkProvider>
           <ThemeProvider>
             <Topbar />
-
+            
             <main className="flex flex-row">
               <LeftSidebar />
               <section className="main-container">
                 <div className="w-full max-w-4xl">{children}</div>
+                
               </section>
               <RightSidebar />
             </main>

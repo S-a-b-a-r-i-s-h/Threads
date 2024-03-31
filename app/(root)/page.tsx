@@ -1,11 +1,10 @@
-"use client"
-import { useTheme } from "@/context/ThemeProvider";
+import { SearchParamsProps } from "@/types";
 
-export default function Home() {
-  const {color} = useTheme();
+export default function Home({ searchParams }: SearchParamsProps) {
+  const colors = searchParams.c;
   return (
     <>
-      <h1 className={`head-text text-left gradient-${color} inline bg-clip-text text-transparent`}>Home</h1>
+      <h1 className={`head-text text-left gradient-${colors} inline bg-clip-text text-transparent`}>Home</h1>
     </>
   )
 }
