@@ -15,7 +15,7 @@ const Topbar = () => {
           alt="logo"
           width={28}
           height={28}
-          className="text-heading3-bold text-light-1 max-xs:hidden"
+          className="text-heading3-bold  max-xs:hidden"
         />
         <p className="text-heading3-bold dark:text-light-1 text-dark-1 max-xs:hidden">
           Threads

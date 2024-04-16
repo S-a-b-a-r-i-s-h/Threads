@@ -3,11 +3,14 @@ import { sidebarLinks } from '@/constants'
 import { useTheme } from '@/context/ThemeProvider';
 import Image from 'next/image';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 
 const Bottombar = () => {
-  const { color,mode } = useTheme();
+  const { mode } = useTheme();
+  const searchParams = useSearchParams();
+  const color = searchParams.get('c') || 'primary';
+  // const color = 'primary';
   const pathname = usePathname();
   return (
     <section className='bottombar'>

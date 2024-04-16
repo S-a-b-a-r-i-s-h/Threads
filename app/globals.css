@@ -15,7 +15,7 @@
 
   /* Activity */
   .activity-card {
-    @apply flex items-center gap-2 rounded-md bg-dark-2 px-7 py-4;
+    @apply flex items-center gap-2 rounded-md dark:bg-dark-2 dark:border-none bg-light-2 border-2 px-7 py-4;
   }
 
   /* No Result */
@@ -47,15 +47,15 @@
   }
 
   .user-card_btn {
-    @apply h-auto min-w-[74px] rounded-lg bg-primary-500 text-[12px] text-light-1 !important;
+    @apply h-auto min-w-[74px] rounded-lg text-[12px] text-light-1 !important;
   }
 
   .searchbar {
-    @apply flex gap-1 rounded-lg bg-dark-3 px-4 py-2;
+    @apply flex gap-1 rounded-lg dark:bg-dark-3 dark:border-none border-2 bg-light-2 px-4 py-2;
   }
 
   .searchbar_input {
-    @apply border-none bg-dark-3 text-base-regular text-light-4 outline-none !important;
+    @apply border-none dark:bg-dark-3 bg-light-2 text-base-regular text-light-4 outline-none !important;
   }
 
   .topbar {
@@ -90,7 +90,7 @@
     @apply shadow-2xl sticky right-0 top-0 z-20 flex h-screen w-fit flex-col justify-between gap-12 overflow-auto border-l dark:border-l-dark-4 dark:bg-dark-2 bg-light-1 px-10 pb-6 pt-28 max-xl:hidden;
   }
   .gradient-primary{
-    @apply bg-gradient-to-r from-red-500 to-red-400;
+    @apply bg-gradient-to-r from-zinc-600 to-zinc-500;
   }
   .gradient-secondary{
     @apply bg-gradient-to-r from-indigo-500 to-indigo-400;
@@ -137,7 +137,7 @@
 
 /* Tab */
 .tab {
-  @apply flex min-h-[50px] flex-1 items-center gap-3 bg-dark-2 text-light-2 data-[state=active]:bg-[#0e0e12] data-[state=active]:text-light-2 !important;
+  @apply flex min-h-[50px] flex-1 items-center gap-3 bg-dark-2 text-light-2 data-[state=active]:text-light-3 !important;
 }
 
 .no-focus {
@@ -159,7 +159,7 @@
 
 /* Comment Form */
 .comment-form {
-  @apply mt-10 flex items-center gap-4 border-y border-y-dark-4 py-5 max-xs:flex-col !important;
+  @apply mt-10 flex items-center gap-4 border-y border-y-dark-4 dark:border-light-2 py-5 max-xs:flex-col !important;
 }
 
 .comment-form_btn {
