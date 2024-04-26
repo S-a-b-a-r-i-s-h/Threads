@@ -11,7 +11,13 @@ import { ThemeProvider } from "@/context/ThemeProvider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Threads",
+  title: {
+    default: "Thoughts",
+    template: "%s | Thoughts",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
   description: "The best place to share your thoughts and ideas!",
 };
 
