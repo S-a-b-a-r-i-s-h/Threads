@@ -1,11 +1,11 @@
 import ThreadCard from "@/components/cards/ThreadCard";
-import { fetchPosts } from "@/lib/actions/thread.actions";
+import { fetchPosts, fetchThreadById } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { SearchParamsProps } from "@/types";
-import { currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 
-export default async function Home({ searchParams }: SearchParamsProps) {
+export default async function Home({ params, searchParams }: { params: { id: string }; searchParams: SearchParamsProps }) {
   const colors = searchParams.c || 'primary';
   console.log(searchParams.c);
 
@@ -14,6 +14,16 @@ export default async function Home({ searchParams }: SearchParamsProps) {
 
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
+
+  const { userId: clerkId } = auth();
+
+  let mongoUser: { _id: any; };
+  if (clerkId) {
+    mongoUser = await fetchUser(clerkId);
+  }
+
+  // const thread = await fetchThreadById(params.id);
+  // const itemId = thread._id;
 
   const result = await fetchPosts(1, 30);
   // console.log(result);
@@ -38,6 +48,11 @@ export default async function Home({ searchParams }: SearchParamsProps) {
                 createdAt={post.createdAt}
                 comments={post.children}
                 searchParams={colors}
+                isHome
+                // upVotes={thread.upVotes.length}
+                // hasupVoted={thread.upVotes.includes(mongoUser._id)}
+                // userId={JSON.stringify(mongoUser._id)}
+                // itemId={JSON.stringify(itemId)}
               />
             ))}
           </>

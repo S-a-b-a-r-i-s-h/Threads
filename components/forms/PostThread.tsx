@@ -19,6 +19,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { ThreadValidation } from "@/lib/validations/thread";
 import { createThread } from "@/lib/actions/thread.actions";
+import mongoose from "mongoose";
 
 interface Props {
   userId: string;
@@ -39,6 +40,8 @@ function PostThread({ userId }: Props) {
       accountId: userId,
     },
   });
+
+  const userIdtemp = "60dbd7b8b54764421b715a90";
 
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
     await createThread({

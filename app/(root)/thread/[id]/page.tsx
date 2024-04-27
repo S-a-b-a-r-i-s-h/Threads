@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 
 import Comment from "@/components/forms/Comment";
 import ThreadCard from "@/components/cards/ThreadCard";
@@ -18,10 +18,25 @@ console.log(searchParams.c,"id")
   if (!user) return null;
 
 
+
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
+  const { userId: clerkId } = auth();
+
+  let mongoUser: { _id: any; };
+  if (clerkId) {
+    mongoUser = await fetchUser(clerkId);
+  }
+
+  // console.log(mongoUser._id, "mongo user id" )
+
   const thread = await fetchThreadById(params.id);
+  const itemId = thread._id;
+  console.log(itemId, "item id")
+  console.log(JSON.stringify(itemId), "item id string")
+  // console.log(thread, "thread")
+  // console.log(user.id, "user id")
 
   return (
     <section className="relative">
@@ -36,6 +51,10 @@ console.log(searchParams.c,"id")
           createdAt={thread.createdAt}
           comments={thread.children}
           searchParams={searchParams.c}
+          upVotes={thread.upVotes.length}
+          hasupVoted={thread.upVotes.includes(mongoUser._id)}
+          userId={JSON.stringify(mongoUser._id)}
+          itemId={JSON.stringify(itemId)}
         />
       </div>
 
@@ -62,6 +81,10 @@ console.log(searchParams.c,"id")
             comments={childItem.children}
             isComment
             searchParams={searchParams.c}
+            upVotes={thread.upVotes.length}
+            hasupVoted={thread.upVotes.includes(mongoUser._id)}
+            userId={JSON.stringify(mongoUser._id)}
+            itemId={JSON.stringify(itemId)}
           />
         ))}
       </div>

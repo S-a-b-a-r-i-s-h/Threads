@@ -7,6 +7,7 @@ import { connectToDB } from "../mongoose";
 import User from "@/database/user.model";
 import Community from "@/database/community.model";
 import Thread from "@/database/thread.model";
+import { ObjectId } from "mongoose";
 
 export async function fetchPosts(pageNumber = 1, pageSize = 20) {
   connectToDB();
@@ -34,7 +35,11 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
         model: User,
         select: "_id name parentId image", // Select only _id and username fields of the author
       },
-    });
+    })
+    .populate({
+      path: "upVotes",
+      model: User,
+    })
 
   // Count the total number of top-level posts (threads) i.e., threads that are not comments.
   const totalPostsCount = await Thread.countDocuments({
@@ -49,14 +54,18 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
 }
 
 interface Params {
-  text: string,
-  author: string,
-  communityId: string | null,
-  path: string,
+  text: string;
+  author: string;
+  communityId: string | null;
+  path: string;
 }
 
-export async function createThread({ text, author, communityId, path }: Params
-) {
+export async function createThread({
+  text,
+  author,
+  communityId,
+  path,
+}: Params) {
   try {
     connectToDB();
 
@@ -69,6 +78,7 @@ export async function createThread({ text, author, communityId, path }: Params
       text,
       author,
       community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
+      
     });
 
     // Update User model
@@ -246,29 +256,31 @@ export interface ThreadVoteParams {
   path: string;
 }
 
-// export async function upvoteThread(params: ThreadVoteParams) {
-//   try {
-//     connectToDB();
+export async function upvoteThread(params: ThreadVoteParams) {
+  try {
+    connectToDB();
 
-//     const { threadId, userId, hasupVoted, path } = params;
+    const { threadId, userId, hasupVoted, path } = params;
 
-//     let updateQuery = {};
+    let updateQuery = {};
 
-//     if(hasupVoted) {
-//       updateQuery = { $pull: { upvotes: userId }}
-//     } else {
-//       updateQuery = { $addToSet: { upvotes: userId }}
-//     }
+    if (hasupVoted) {
+      updateQuery = { $pull: { upVotes: userId } };
+    } else {
+      updateQuery = { $addToSet: { upVotes: userId } };
+    }
 
-//     const thread = await Thread.findByIdAndUpdate(threadId, updateQuery, { new: true });
-    
-//     if(!thread) {
-//       throw new Error("Thread not found");
-//     }
-    
-//     // revalidatePath(path);
-//   } catch (error) {
-//     console.log(error);
-//     throw error;
-//   }
-// }
+    const thread = await Thread.findByIdAndUpdate(threadId, updateQuery, {
+      new: true,
+    });
+
+    if (!thread) {
+      throw new Error("Thread not found");
+    }
+
+    revalidatePath(path);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+}
