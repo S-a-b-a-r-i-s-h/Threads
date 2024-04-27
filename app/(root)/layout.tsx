@@ -7,7 +7,6 @@ import Bottombar from "@/components/shared/Bottombar";
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import RightSidebar from "@/components/shared/RightSidebar";
 import { ThemeProvider } from "@/context/ThemeProvider";
-import { url } from "inspector";
 
 const inter = Inter({ subsets: ["latin"] });
 

@@ -78,15 +78,15 @@ async function Page({ params, searchParams }: { params: { id: string }; searchPa
             </section>
           </TabsContent>
 
-          <TabsContent value='requests' className='w-full text-light-1'>
-            {/* @ts-ignore */}
+          {/* <TabsContent value='requests' className='w-full text-light-1'>
+            @ts-ignore
             <ThreadsTab
               currentUserId={user.id}
               accountId={communityDetails._id}
               accountType='Community'
               searchParams={searchParams.c}
             />
-          </TabsContent>
+          </TabsContent> */}
         </Tabs>
       </div>
     </section>

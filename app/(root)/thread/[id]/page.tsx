@@ -6,7 +6,6 @@ import ThreadCard from "@/components/cards/ThreadCard";
 
 import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchThreadById } from "@/lib/actions/thread.actions";
-import { SearchParamsProps } from "@/types";
 
 export const revalidate = 0;
 
@@ -17,6 +16,7 @@ console.log(searchParams.c,"id")
 
   const user = await currentUser();
   if (!user) return null;
+
 
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
@@ -49,7 +49,7 @@ console.log(searchParams.c,"id")
       </div>
 
       <div className="mt-10">
-        {thread.children.map((childItem: any) => (
+        {thread.children.map((childItem: any) => (  
           <ThreadCard
             key={childItem._id}
             id={childItem._id}

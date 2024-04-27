@@ -238,3 +238,37 @@ export async function addCommentToThread(
     throw new Error("Unable to add comment");
   }
 }
+
+export interface ThreadVoteParams {
+  threadId: string;
+  userId: string;
+  hasupVoted: boolean;
+  path: string;
+}
+
+// export async function upvoteThread(params: ThreadVoteParams) {
+//   try {
+//     connectToDB();
+
+//     const { threadId, userId, hasupVoted, path } = params;
+
+//     let updateQuery = {};
+
+//     if(hasupVoted) {
+//       updateQuery = { $pull: { upvotes: userId }}
+//     } else {
+//       updateQuery = { $addToSet: { upvotes: userId }}
+//     }
+
+//     const thread = await Thread.findByIdAndUpdate(threadId, updateQuery, { new: true });
+    
+//     if(!thread) {
+//       throw new Error("Thread not found");
+//     }
+    
+//     // revalidatePath(path);
+//   } catch (error) {
+//     console.log(error);
+//     throw error;
+//   }
+// }

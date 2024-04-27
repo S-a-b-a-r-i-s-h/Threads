@@ -3,6 +3,7 @@ import Link from "next/link";
 
 import { formatDateString } from "@/lib/utils";
 import DeleteThread from "../forms/DeleteThread";
+import ShareButton from "../shared/ShareButton";
 
 interface Props {
   id: string;
@@ -116,20 +117,16 @@ function ThreadCard({
                     className='cursor-pointer object-contain'
                   />
                 </Link>
-                <Image
-                  src='/assets/repost.svg'
-                  alt='heart'
-                  width={24}
-                  height={24}
-                  className='cursor-pointer object-contain'
+                <ShareButton 
+                  searchParams={searchParams}
                 />
-                <Image
+                {/* <Image
                   src='/assets/share.svg'
                   alt='heart'
                   width={24}
                   height={24}
                   className='cursor-pointer object-contain'
-                />
+                /> */}
               </div>
 
               {isComment && comments.length > 0 && (

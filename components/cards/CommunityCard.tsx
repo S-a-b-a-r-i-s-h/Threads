@@ -19,7 +19,7 @@ function CommunityCard({ id, name, username, imgUrl, bio, members, searchParams 
   const colors = searchParams || "primary";
   return (
     <article className='community-card'>
-      <div className='flex flex-wrap items-center gap-3'>
+      <div className='flex flex-wrap items-center gap-3 mb-10'>
         <Link href={{
           pathname: `/communities/${id}`,
           query: { c: colors },
@@ -43,7 +43,7 @@ function CommunityCard({ id, name, username, imgUrl, bio, members, searchParams 
         </div>
       </div>
 
-      <p className='mt-4 text-subtle-medium text-gray-1'>{bio}</p>
+      {/* <p className='mt-4 text-subtle-medium text-gray-1'>{bio}</p> */}
 
       <div className='mt-5 flex flex-wrap items-center justify-between gap-3'>
         <Link href={{
