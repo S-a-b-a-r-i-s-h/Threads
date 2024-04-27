@@ -12,13 +12,18 @@ interface Props {
   members: {
     image: string;
   }[];
+  searchParams: string;
 }
 
-function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
+function CommunityCard({ id, name, username, imgUrl, bio, members, searchParams }: Props) {
+  const colors = searchParams || "primary";
   return (
     <article className='community-card'>
       <div className='flex flex-wrap items-center gap-3'>
-        <Link href={`/communities/${id}`} className='relative h-12 w-12'>
+        <Link href={{
+          pathname: `/communities/${id}`,
+          query: { c: colors },
+        }} className='relative h-12 w-12'>
           <Image
             src={imgUrl}
             alt='community_logo'
@@ -28,18 +33,24 @@ function CommunityCard({ id, name, username, imgUrl, bio, members }: Props) {
         </Link>
 
         <div>
-          <Link href={`/communities/${id}`}>
-            <h4 className='text-base-semibold text-light-1'>{name}</h4>
+          <Link href={{
+            pathname: `/communities/${id}`,
+            query: { c: colors },
+          }}>
+            <h4 className='text-base-semibold dark:text-light-1'>{name}</h4>
           </Link>
-          <p className='text-small-medium text-gray-1'>@{username}</p>
+          <p className={`text-small-medium gradient-${colors} bg-clip-text text-transparent`}>@{username}</p>
         </div>
       </div>
 
       <p className='mt-4 text-subtle-medium text-gray-1'>{bio}</p>
 
       <div className='mt-5 flex flex-wrap items-center justify-between gap-3'>
-        <Link href={`/communities/${id}`}>
-          <Button size='sm' className='community-card_btn'>
+        <Link href={{
+          pathname: `/communities/${id}`,
+          query: { c: colors },
+        }}>
+          <Button size='sm' className={`community-card_btn gradient-${colors}`}>
             View
           </Button>
         </Link>

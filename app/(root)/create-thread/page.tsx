@@ -16,7 +16,7 @@ async function Page({ searchParams }: SearchParamsProps) {
 
   return (
     <>
-      <h1 className={`head-text gradient-${colors} bg-clip-text text-transparent`}>Create Thread</h1>
+      <h1 className={`head-text gradient-${colors} bg-clip-text text-transparent inline-block`}>Create Thread</h1>
 
       <PostThread userId={userInfo._id} />
     </>

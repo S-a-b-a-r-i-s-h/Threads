@@ -10,6 +10,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 import { fetchUser } from "@/lib/actions/user.actions";
 
+
 async function Page({ params, searchParams }: { params: { id: string }; searchParams: any }) {
   const user = await currentUser();
   if (!user) return null;

@@ -7,6 +7,7 @@ import Bottombar from "@/components/shared/Bottombar";
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import RightSidebar from "@/components/shared/RightSidebar";
 import { ThemeProvider } from "@/context/ThemeProvider";
+import { url } from "inspector";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,8 +27,9 @@ export const metadata: Metadata = {
       {
         url: "https://threads-3y6k3bjyf-sabarishs-projects-ff1ef71e.vercel.app/opengraph-image.png?54361e507490551f"
       }
-    ]
-  }
+    ],
+    url: "https://thoughts-a-thread.vercel.app/"
+  },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
@@ -47,6 +49,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                 <div className="w-full max-w-4xl">{children}</div>
                 
               </section>
+
               <RightSidebar />
             </main>
 

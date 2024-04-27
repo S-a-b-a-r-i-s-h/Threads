@@ -42,6 +42,7 @@ function ThreadCard({
   searchParams
 }: Props) {
   console.log(searchParams, "threads card")
+  const colors = searchParams || "primary";
   return (
     <article
       className={`flex w-full flex-col rounded-xl ${
@@ -185,9 +186,9 @@ function ThreadCard({
       {!isComment && community && (
         <Link
           href={{
-            pathname: `/community/${community.id}`,
+            pathname: `/communities/${community.id}`,
             query: {
-              c: searchParams,
+              c: searchParams
             }
           }}
           className='mt-5 flex items-center'
