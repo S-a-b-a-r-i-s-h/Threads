@@ -5,8 +5,11 @@ import { SignedIn, SignOutButton,OrganizationSwitcher } from "@clerk/nextjs";
 import Theme from "./Theme";
 import { useTheme } from "@/context/ThemeProvider";
 import { dark } from "@clerk/themes"
+import { useSearchParams } from "next/navigation";
 const Topbar = () => {
   const { mode } = useTheme();
+  const searchParams = useSearchParams();
+  const colors = searchParams.get("c") || 'primary';
   return (
     <nav className="topbar">
       <Link href="/" className="flex items-center gap-4">
@@ -15,10 +18,10 @@ const Topbar = () => {
           alt="logo"
           width={28}
           height={28}
-          className="text-heading3-bold  max-xs:hidden"
+          className={`text-heading3-bold  max-xs:hidden gradient-${colors} bg-clip-text text-transparent`}
         />
-        <p className="text-heading3-bold dark:text-light-1 text-dark-1 max-xs:hidden">
-          Threads
+        <p className={`text-heading3-bold max-xs:hidden gradient-${colors} bg-clip-text text-transparent`}>
+          Thoughts
         </p>
       </Link>
 

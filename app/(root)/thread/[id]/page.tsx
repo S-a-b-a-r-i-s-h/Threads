@@ -35,7 +35,7 @@ console.log(searchParams.c,"id")
   const itemId = thread._id;
   console.log(itemId, "item id")
   console.log(JSON.stringify(itemId), "item id string")
-  // console.log(thread, "thread")
+  // console.log(itemId, "thread id")
   // console.log(user.id, "user id")
 
   return (

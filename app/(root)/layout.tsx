@@ -7,6 +7,7 @@ import Bottombar from "@/components/shared/Bottombar";
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import RightSidebar from "@/components/shared/RightSidebar";
 import { ThemeProvider } from "@/context/ThemeProvider";
+import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -51,6 +52,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
               <RightSidebar />
             </main>
+            <Toaster />
 
             <Bottombar />
           </ThemeProvider>

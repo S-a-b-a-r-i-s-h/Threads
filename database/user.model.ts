@@ -1,6 +1,18 @@
-import mongoose from "mongoose";
+import { Document, model, models, Schema } from "mongoose";
 
-const userSchema = new mongoose.Schema({
+export interface IUser extends Document {
+  id: string;
+  username: string;
+  name: string;
+  image: string;
+  bio: string;
+  threads: Schema.Types.ObjectId[];
+  onboarded: boolean;
+  communities: Schema.Types.ObjectId[];
+  followers: Schema.Types.ObjectId[];
+}
+
+const userSchema = new Schema({
   id: {
     type: String,
     required: true,
@@ -18,7 +30,7 @@ const userSchema = new mongoose.Schema({
   bio: String,
   threads: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Thread",
     },
   ],
@@ -28,12 +40,13 @@ const userSchema = new mongoose.Schema({
   },
   communities: [
     {
-      type: mongoose.Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Community",
     },
   ],
+  followers: [{ type: Schema.Types.ObjectId, ref: "User" } ],
 });
 
-const User = mongoose.models.User || mongoose.model("User", userSchema);
+const User = models.User || model("User", userSchema);
 
 export default User;

@@ -68,7 +68,7 @@ function ThreadCard({
           <div className="flex flex-col items-center">
             <Link
               href={{
-                pathname: `/profile/${author.id}`,
+                pathname: `/profile/${author?.id}`,
                 query: {
                   c: searchParams,
                 },
@@ -76,7 +76,7 @@ function ThreadCard({
               className="relative h-11 w-11"
             >
               <Image
-                src={author.image}
+                src={author?.image}
                 alt="user_community_image"
                 fill
                 className="cursor-pointer rounded-full"
@@ -89,7 +89,7 @@ function ThreadCard({
           <div className="flex w-full flex-col">
             <Link
               href={{
-                pathname: `/profile/${author.id}`,
+                pathname: `/profile/${author?.id}`,
                 query: {
                   c: searchParams,
                 },
@@ -97,7 +97,7 @@ function ThreadCard({
               className="w-fit"
             >
               <h4 className="cursor-pointer text-base-semibold dark:text-light-1">
-                {author.name}
+                {author?.name}
               </h4>
             </Link>
 
@@ -161,7 +161,7 @@ function ThreadCard({
         <DeleteThread
           threadId={JSON.stringify(id)}
           currentUserId={currentUserId}
-          authorId={author.id}
+          authorId={author?.id}
           parentId={parentId}
           isComment={isComment}
         />
@@ -172,7 +172,7 @@ function ThreadCard({
           {comments.slice(0, 2).map((comment, index) => (
             <Image
               key={index}
-              src={comment.author.image}
+              src={comment.author?.image}
               alt={`user_${index}`}
               width={24}
               height={24}

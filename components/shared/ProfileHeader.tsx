@@ -1,5 +1,7 @@
+"use client"
 import Link from "next/link";
 import Image from "next/image";
+import { followUser } from "@/lib/actions/user.actions";
 
 interface Props {
   accountId: string;
@@ -10,6 +12,10 @@ interface Props {
   bio: string;
   type?: string;
   searchParams: string;
+  followers: number;
+  hasFollowed: boolean;
+  userId: string;
+  itemId: string;
 }
 
 function ProfileHeader({
@@ -20,9 +26,23 @@ function ProfileHeader({
   imgUrl,
   bio,
   type,
-  searchParams
+  searchParams,
+  followers,
+  hasFollowed,
+  userId,
+  itemId,
 }: Props) {
-  console.log(searchParams, "profile header")
+
+  const handleFollow = async () => {
+    console.log(JSON.parse(itemId), JSON.parse(userId), hasFollowed, "follows")
+    await followUser({
+        itemId: JSON.parse(itemId),
+        userId: JSON.parse(userId),
+        hasFollowed,
+        path: ""
+    });
+  };
+  // console.log(searchParams, "profile header")
   const colors = searchParams || 'primary';
   return (
     <div className='flex w-full flex-col justify-start'>
@@ -57,6 +77,17 @@ function ProfileHeader({
               <p className={`text-light-2  max-sm:hidden`}>Edit</p>
             </div>
           </Link>
+        )}
+      </div>
+
+      <div className="mt-4 dark:text-white">
+        {accountId === authUserId && type !== "Community" && (
+            <div className="flex gap-7">
+              <button className={`gradient-${colors} bg-clip-text text-transparent`} onClick={() => {handleFollow()}}>
+                {hasFollowed ? "Unfollow" : "Follow"}
+              </button> 
+              {/* <button className={`gradient-${colors} bg-clip-text text-transparent`}>Unfollow</button> */}
+            </div>
         )}
       </div>
 

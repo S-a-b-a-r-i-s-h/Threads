@@ -2,14 +2,17 @@
 
 import Image from 'next/image'
 import { useParams, useRouter } from 'next/navigation'
+import { useToast } from '../ui/use-toast'
 
 interface ShareButtonProps {
     searchParams: string
 }
 
 const ShareButton = ({ searchParams }: ShareButtonProps) => {
+  const { toast } = useToast()
   const router = useRouter()
   const params = useParams()
+  const colors = searchParams
 
   const handleShare = async () => {
     const currentUrl = window.location.origin + "/thread/" + params.id + '?c=' + searchParams
@@ -20,8 +23,11 @@ const ShareButton = ({ searchParams }: ShareButtonProps) => {
     } catch (err) {
       console.error('Failed to copy URL: ', err)
     }
+    toast({
+      title: "Link Copied!",
+      className: `gradient-${colors} `,
+    })
   }
-  http://localhost:3001661a7a855074a545dc18e283?c=primary
   return (
     <div>
         <Image 

@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { currentUser } from "@clerk/nextjs";
+import { auth, currentUser } from "@clerk/nextjs";
 import { redirect } from "next/navigation";
 import { profileTabs } from "@/constants";
 import ThreadsTab from "@/components/shared/ThreadsTab";
@@ -12,9 +12,23 @@ async function Page({ params, searchParams }: { params: { id: string }; searchPa
   if (!user) return null;
 
   const userInfo = await fetchUser(params.id);
+  // console.log(userInfo._id, "user info id")
+  
+  
   if (!userInfo?.onboarded) redirect("/onboarding");
   console.log(searchParams.c, "profile")
   const colors = searchParams.c || 'primary';
+  
+  const itemId = userInfo._id;
+
+  const { userId: clerkId } = auth();
+
+  let mongoUser: { _id: any; };
+  if (clerkId) {
+    mongoUser = await fetchUser(clerkId);
+  }
+  // console.log(mongoUser)
+  // console.log(userInfo.id, user.id)
 
   return (
     <section>
@@ -26,6 +40,10 @@ async function Page({ params, searchParams }: { params: { id: string }; searchPa
         imgUrl={userInfo.image}
         bio={userInfo.bio}
         searchParams={searchParams.c}
+        followers={userInfo.followers?.length}
+        hasFollowed={userInfo.followers?.includes(mongoUser._id)}
+        userId={JSON.stringify(mongoUser._id)}
+        itemId={JSON.stringify(itemId)}
       />
 
       <div className='mt-9'>

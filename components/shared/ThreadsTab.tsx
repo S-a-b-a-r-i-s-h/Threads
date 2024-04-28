@@ -78,6 +78,7 @@ async function ThreadsTab({ currentUserId, accountId, accountType, searchParams 
           createdAt={thread.createdAt}
           comments={thread.children}
           searchParams={searchParams}
+          isHome
         />
       ))}
     </section>

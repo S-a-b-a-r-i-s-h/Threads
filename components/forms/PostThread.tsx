@@ -41,7 +41,6 @@ function PostThread({ userId }: Props) {
     },
   });
 
-  const userIdtemp = "60dbd7b8b54764421b715a90";
 
   const onSubmit = async (values: z.infer<typeof ThreadValidation>) => {
     await createThread({
@@ -77,7 +76,7 @@ function PostThread({ userId }: Props) {
         />
 
         <Button type='submit' className={`gradient-${colors} dark:text-white`}>
-          Post Thread
+          Post Thought
         </Button>
       </form>
     </Form>
