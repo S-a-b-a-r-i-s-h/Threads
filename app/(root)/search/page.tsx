@@ -29,7 +29,7 @@ async function Page({ searchParams }: SearchParamsProps) {
       <h1 className={`head-text mb-10 gradient-${colors} bg-clip-text text-transparent inline-block`}>Search</h1>
 
       <Searchbar 
-        routeType='/search'
+        routeType='search'
       />
 
       <div className='mt-14 flex flex-col gap-9'>

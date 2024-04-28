@@ -6,6 +6,7 @@ import Theme from "./Theme";
 import { useTheme } from "@/context/ThemeProvider";
 import { dark } from "@clerk/themes"
 import { useSearchParams } from "next/navigation";
+import Color from "./Color";
 const Topbar = () => {
   const { mode } = useTheme();
   const searchParams = useSearchParams();
@@ -26,6 +27,9 @@ const Topbar = () => {
       </Link>
 
       <div className="flex items-center gap-5">
+        <div className="max-sm:hidden">
+          <Color />
+        </div>
         <Theme />
         <div className="block md:hidden">
           <SignedIn>

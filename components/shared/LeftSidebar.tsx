@@ -43,7 +43,9 @@ export default function LeftSidebar() {
               <p className={`dark:text-light-1 text-dark-1 max-lg:hidden ${isActive ? 'text-light-1' : '' }`}>{link.label}</p>
             </Link>  
           )})}
-          <Color />
+
+          {/* <h1 className={`gradient-${colors} bg-clip-text text-transparent inline-block`}>Change Theme</h1> */}
+          {/* <Color /> */}
       </div>
 
       <div className='mt-10 px-6'>

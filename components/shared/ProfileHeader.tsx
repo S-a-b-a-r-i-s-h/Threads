@@ -2,6 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { followUser } from "@/lib/actions/user.actions";
+import Color from "./Color";
 
 interface Props {
   accountId: string;
@@ -80,18 +81,22 @@ function ProfileHeader({
         )}
       </div>
 
-      <div className="mt-4 dark:text-white">
+      <div className="mt-4 dark:text-white mb-2">
         {accountId === authUserId && type !== "Community" && (
-            <div className="flex gap-7">
-              <button className={`gradient-${colors} bg-clip-text text-transparent`} onClick={() => {handleFollow()}}>
-                {hasFollowed ? "Unfollow" : "Follow"}
-              </button> 
-              {/* <button className={`gradient-${colors} bg-clip-text text-transparent`}>Unfollow</button> */}
+            // <div className="flex gap-7">
+            //   <button className={`gradient-${colors} bg-clip-text text-transparent`} onClick={() => {handleFollow()}}>
+            //     {hasFollowed ? "Unfollow" : "Follow"}
+            //   </button> 
+            //   <button className={`gradient-${colors} bg-clip-text text-transparent`}>Unfollow</button>
+            // </div>
+            <div className="hidden max-sm:block">
+              <h1 className={`gradient-${colors} bg-clip-text text-transparent inline-block mb-4`}>Change Theme</h1>
+              <Color />
             </div>
         )}
       </div>
-
-      <p className='mt-6 max-w-lg text-base-regular dark:text-light-2'>{type != "Community" && bio}</p>
+      <span className={`gradient-${colors} bg-clip-text text-transparent mt-3 w-[30px]`}>Bio</span>
+      <p className='mt-2 max-w-lg text-base-regular dark:text-light-2'>{type != "Community" && bio}</p>
 
       <div className={`mt-12 h-0.5 w-full gradient-${colors}`}  />
     </div>
