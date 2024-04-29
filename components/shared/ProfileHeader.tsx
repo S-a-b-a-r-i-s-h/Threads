@@ -18,6 +18,7 @@ interface Props {
   hasFollowed: boolean;
   userId: string;
   itemId: string;
+  paramsId?: string;
 }
 
 function ProfileHeader({
@@ -33,6 +34,7 @@ function ProfileHeader({
   hasFollowed,
   userId,
   itemId,
+  paramsId,
 }: Props) {
   const handleFollow = async () => {
     console.log(JSON.parse(itemId), JSON.parse(userId), hasFollowed, "follows");
@@ -89,20 +91,35 @@ function ProfileHeader({
         )}
       </div>
 
-      {accountId !== authUserId && (
-        <div className="flex gap-7 items-center mt-4">
-          <Button
-            className={`gradient-${colors} text-white dark:text-white w-24`}
-            onClick={() => {
-              handleFollow();
-            }}
-          >
-            {hasFollowed ? "Unfollow" : "Follow"}
-          </Button>
-          <p className={`gradient-${colors} text-transparent bg-clip-text`}>{followers == 0 ? 'No Followers' : followers == 1 ? `${followers} follower` : `${followers} followers`}</p>
-        </div>
-      )}
-
+      <div className="flex gap-7 items-center mt-4">
+        {accountId !== authUserId && (
+          <div>
+            <Button
+              className={`gradient-${colors} text-white dark:text-white w-24`}
+              onClick={() => {
+                handleFollow();
+              }}
+            >
+              {hasFollowed ? "Unfollow" : "Follow"}
+            </Button>  
+          </div>
+        )}
+        {followers == 0 ? (
+          <p className={`gradient-${colors} text-transparent bg-clip-text`}>No Followers</p>
+        ): (
+          <Link 
+          href={{
+            pathname: `/followers`,
+            query: { c: colors, id: paramsId } 
+          }} 
+          className={`gradient-${colors} text-transparent bg-clip-text`}
+        >
+          {followers == 1 ? `${followers} follower` : `${followers} followers`}
+        </Link>
+        )}
+        
+      </div>
+      
       <div className="mt-4 dark:text-white mb-2">
         {accountId === authUserId && type !== "Community" && (
           <>

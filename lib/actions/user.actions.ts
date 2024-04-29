@@ -26,6 +26,23 @@ export async function fetchUser(userId: string) {
   }
 }
 
+export async function fetchFollowers(userId: string) {
+  try {
+    connectToDB();
+
+    const user = await User.findOne({ _id: userId }).populate({
+      path: "followers",
+      model: User,
+      select: "name image id",
+    });
+
+    return user
+  }
+  catch (error: any) {
+    throw new Error(`Failed to fetch followers: ${error.message}`);
+  }
+}
+
 interface Params {
   userId: string;
   username: string;

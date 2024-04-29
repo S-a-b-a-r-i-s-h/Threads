@@ -44,6 +44,7 @@ async function Page({ params, searchParams }: { params: { id: string }; searchPa
         hasFollowed={userInfo.followers?.includes(mongoUser._id)}
         userId={JSON.stringify(mongoUser._id)}
         itemId={JSON.stringify(itemId)}
+        paramsId={params.id}
       />
 
       <div className='mt-9'>

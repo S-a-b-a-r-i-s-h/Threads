@@ -44,7 +44,9 @@ const userSchema = new Schema({
       ref: "Community",
     },
   ],
+  // followers: [{ string , ref: "User" } ],
   followers: [{ type: Schema.Types.ObjectId, ref: "User" } ],
+  // followers: [{ type: String, ref: "User" }]
 });
 
 const User = models.User || model("User", userSchema);

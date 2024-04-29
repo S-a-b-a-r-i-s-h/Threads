@@ -27,7 +27,8 @@ export default function LeftSidebar() {
             <Link 
               href={{
                 pathname: link.route,
-                query: searchParams.toString()
+                // query: searchParams.toString()
+                query: {c: colors}
               }}
               key={link.label}
               className={`leftsidebar_link ${isActive ? `gradient-${colors}` : '' } `}
