@@ -39,6 +39,14 @@ const Color = () => {
             }}
         >
         </button>
+        <button 
+            className='w-[20px] h-[20px] rounded-full gradient-tertiary'
+            onClick={() => {
+                localStorage.color = 'tertiary'
+                handleColorFilter('tertiary');
+            }}
+        >
+        </button>
     </div>
   )
 }

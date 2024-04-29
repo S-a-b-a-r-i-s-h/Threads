@@ -33,7 +33,6 @@ interface Params {
   bio: string;
   image: string;
   path: string;
-  followers: Schema.Types.ObjectId[];
 }
 
 export async function updateUser({
@@ -43,7 +42,7 @@ export async function updateUser({
   bio,
   image,
   path,
-  followers = [],
+  // followers = [],
 }: Params): Promise<void> {
   try {
     connectToDB();
@@ -55,7 +54,7 @@ export async function updateUser({
         bio,
         image,
         onboarded: true,
-        followers: followers,
+        // followers: followers,
       },
       { upsert: true }
     );
@@ -200,6 +199,7 @@ export async function followUser(params: followUserParams) {
     connectToDB();
 
     const { itemId, userId, hasFollowed, path } = params;
+    console.log("Comes into followUser actions" + itemId + userId + hasFollowed)
 
     let updateQuery = {};
 
