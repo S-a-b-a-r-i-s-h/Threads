@@ -43,7 +43,7 @@ async function Page({ searchParams }: SearchParamsProps) {
                     <span className={`mr-1 gradient-${colors} bg-clip-text text-transparent`}>
                       {activity.author.name}
                     </span>{" "}
-                    replied to your thread
+                    replied to your thought
                   </p>
                 </article>
               </Link>

@@ -92,7 +92,7 @@ function ProfileHeader({
       </div>
 
       <div className="flex gap-7 items-center mt-4">
-        {accountId !== authUserId && (
+        {accountId !== authUserId && type !== "Community" && (
           <div>
             <Button
               className={`gradient-${colors} text-white dark:text-white w-24`}
@@ -104,15 +104,16 @@ function ProfileHeader({
             </Button>  
           </div>
         )}
+        
         {followers == 0 ? (
-          <p className={`gradient-${colors} text-transparent bg-clip-text`}>No Followers</p>
+          <p className={`gradient-${colors} text-transparent bg-clip-text ${type == "Community" && "hidden"}`}>No Followers</p>
         ): (
           <Link 
           href={{
             pathname: `/followers`,
             query: { c: colors, id: paramsId } 
           }} 
-          className={`gradient-${colors} text-transparent bg-clip-text`}
+          className={`gradient-${colors} text-transparent bg-clip-text ${type == "Community" && "hidden"}`}
         >
           {followers == 1 ? `${followers} follower` : `${followers} followers`}
         </Link>
