@@ -49,10 +49,10 @@ export default function RootLayout({
         <meta property="og:title" content="Thoughts" />
         <meta property="og:description" content="The best place to share your thoughts and ideas!" />
         <meta property="og:url" content="https://thoughts-a-thread.vercel.app" />
-        <meta property="og:image" content="https://ibb.co/chzzfWX" />
+        <meta property="og:image" content="https://www.imghippo.com/i/npYpZ1714736425.png" />
         <meta name="twitter:title" content="Thoughts" />
         <meta name="twitter:description" content="The best place to share your thoughts and ideas!" />
-        <meta name="twitter:image" content="https://ibb.co/chzzfWX" />
+        <meta name="twitter:image" content="https://www.imghippo.com/i/npYpZ1714736425.png" />
         <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
       </head>
