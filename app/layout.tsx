@@ -45,52 +45,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        {/* <title>Thoughts</title>
+        <title>Thoughts</title>
         <meta property="og:title" content="Thoughts" />
         <meta property="og:description" content="The best place to share your thoughts and ideas!" />
         <meta property="og:url" content="https://thoughts-a-thread.vercel.app" />
-        <meta property="og:image" content="https://i.postimg.cc/DzvqrW8k/opengraph-image.png" />
+        <meta property="og:image" content="https://ibb.co/chzzfWX" />
         <meta name="twitter:title" content="Thoughts" />
         <meta name="twitter:description" content="The best place to share your thoughts and ideas!" />
-        <meta name="twitter:image" content="https://i.postimg.cc/DzvqrW8k/opengraph-image.png" />
+        <meta name="twitter:image" content="https://ibb.co/chzzfWX" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="icon" href="/assets/favicon.ico" sizes="any" /> */}
-        <title>Thoughts</title>
-        <meta name="title" content="Thoughts" />
-        <meta
-          name="description"
-          content="The best place to share your thoughts and ideas!"
-        />
-
-        <meta property="og:type" content="website" />
-        <meta
-          property="og:url"
-          content="https://thoughts-a-thread.vercel.app/"
-        />
-        <meta property="og:title" content="Thoughts" />
-        <meta
-          property="og:description"
-          content="The best place to share your thoughts and ideas!"
-        />
-        <meta
-          property="og:image"
-          content="https://metatags.io/images/meta-tags.png"
-        />
-
-        <meta property="twitter:card" content="summary_large_image" />
-        <meta
-          property="twitter:url"
-          content="https://thoughts-a-thread.vercel.app/"
-        />
-        <meta property="twitter:title" content="Thoughts" />
-        <meta
-          property="twitter:description"
-          content="The best place to share your thoughts and ideas!"
-        />
-        <meta
-          property="twitter:image"
-          content="https://metatags.io/images/meta-tags.png"
-        />
+        <link rel="icon" href="/assets/favicon.ico" sizes="any" />
       </head>
       <body className={inter.className}>
         <ClerkProvider>
