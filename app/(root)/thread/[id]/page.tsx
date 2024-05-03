@@ -6,6 +6,15 @@ import ThreadCard from "@/components/cards/ThreadCard";
 
 import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchThreadById } from "@/lib/actions/thread.actions";
+import { Metadata } from "next";
+
+export async function generateMetadata({ params }: { params: { id: string }}): Promise<Metadata> {
+  const thread = await fetchThreadById(params.id);
+  return {
+    title: `${thread.author.name}'s Thought`,
+    description: thread.text,
+  }
+}
 
 export const revalidate = 0;
 

@@ -98,6 +98,9 @@
   .gradient-tertiary{
     @apply bg-gradient-to-r from-indigo-400 to-cyan-400;
   }
+  .gradient-four{
+    @apply bg-gradient-to-r from-red-400 to-cyan-400;
+  }
 }
 
 @layer utilities {

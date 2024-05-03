@@ -4,6 +4,11 @@ import { redirect } from "next/navigation";
 import PostThread from "@/components/forms/PostThread";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { SearchParamsProps } from "@/types";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Create",
+}
 
 async function Page({ searchParams }: SearchParamsProps) {
   const colors = searchParams.c || 'primary';

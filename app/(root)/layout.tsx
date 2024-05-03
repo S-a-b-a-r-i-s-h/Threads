@@ -20,16 +20,16 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   description: "The best place to share your thoughts and ideas!",
-  openGraph: {
-    title: "Thoughts",
-    description: "The best place to share your thoughts and ideas!",
-    images: [
-      {
-        url: "https://threads-3y6k3bjyf-sabarishs-projects-ff1ef71e.vercel.app/opengraph-image.png?54361e507490551f"
-      }
-    ],
-    url: "https://thoughts-a-thread.vercel.app/"
-  },
+  // openGraph: {
+  //   title: "Thoughts",
+  //   description: "The best place to share your thoughts and ideas!",
+  //   images: [
+  //     {
+  //       url: "https://threads-3y6k3bjyf-sabarishs-projects-ff1ef71e.vercel.app/opengraph-image.png?54361e507490551f"
+  //     }
+  //   ],
+  //   url: "https://thoughts-a-thread.vercel.app/"
+  // },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {

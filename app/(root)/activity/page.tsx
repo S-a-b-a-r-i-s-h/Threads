@@ -5,6 +5,11 @@ import { redirect } from "next/navigation";
 
 import { fetchUser, getActivity } from "@/lib/actions/user.actions";
 import { SearchParamsProps } from "@/types";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Activity",
+}
 
 async function Page({ searchParams }: SearchParamsProps) {
   const user = await currentUser();

@@ -6,6 +6,26 @@ import ThreadsTab from "@/components/shared/ThreadsTab";
 import ProfileHeader from "@/components/shared/ProfileHeader";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { fetchUser } from "@/lib/actions/user.actions";
+import { Metadata } from "next";
+
+// export const metadata: Metadata = {
+//   title: "Profile",
+// }
+
+export async function generateMetadata({ params }: {params: { id: string }}): Promise<Metadata> {
+  const userInfo = await fetchUser(params.id);
+  return {
+    title: `${userInfo.name} (@${userInfo.username})`,
+    description: userInfo.bio,
+    openGraph: {
+      images: [
+        {
+          url: userInfo.image,
+        }
+      ]
+    }
+  }
+}
 
 async function Page({ params, searchParams }: { params: { id: string }; searchParams: any }) {
   const user = await currentUser();

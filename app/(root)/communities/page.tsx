@@ -7,6 +7,11 @@ import CommunityCard from "@/components/cards/CommunityCard";
 
 import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchCommunities } from "@/lib/actions/community.actions";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Communities",
+}
 
 async function Page({
   searchParams,

@@ -2,7 +2,12 @@ import UserCard from "@/components/cards/UserCard";
 import { fetchFollowers, fetchUser } from "@/lib/actions/user.actions";
 import { SearchParamsProps } from "@/types";
 import { auth, currentUser } from "@clerk/nextjs";
+import { Metadata } from "next";
 import React from "react";
+
+export const metadata: Metadata = {
+  title: "Followers",
+}
 
 const page = async ({
   params,

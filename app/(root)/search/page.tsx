@@ -7,6 +7,11 @@ import Pagination from "@/components/shared/Pagination";
 
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
 import { SearchParamsProps } from "@/types";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Search",
+}
 
 async function Page({ searchParams }: SearchParamsProps) {
   const user = await currentUser();
