@@ -74,7 +74,7 @@ function ProfileHeader({
           </div>
         </div>
         {accountId === authUserId && type !== "Community" && (
-          <Link href="/profile/edit">
+          <Link href="/onboarding">
             <div
               className={`flex cursor-pointer gap-3 rounded-lg gradient-${colors} px-4 py-2`}
             >
