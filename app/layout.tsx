@@ -11,41 +11,47 @@ import { Toaster } from "@/components/ui/toaster"
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  title: {
-    default: "Thoughts",
-    template: "%s | Thoughts",
-  },
-  twitter: {
-    card: "summary_large_image",
-  },
-  description: "The best place to share your thoughts and ideas!",
-  other: {
-    "og:title": "Thoughts",
-    "og:description": "The best place to share your thoughts and ideas!",
-    "og:url": "thoughts-a-thread.vercel.app",
-    "og:image": "https://i.postimg.cc/DzvqrW8k/opengraph-image.png",
-    "twitter:title": "Thoughts",
-    "twitter:description": "The best place to share your thoughts and ideas!",
-    "twitter:image": "https://i.postimg.cc/DzvqrW8k/opengraph-image.png",
-    "twitter:card": "summary_large_image",
-  }
-  // openGraph: {
-  //   title: "Thoughts",
-  //   description: "The best place to share your thoughts and ideas!",
-  //   images: [
-  //     {
-  //       url: "https://threads-3y6k3bjyf-sabarishs-projects-ff1ef71e.vercel.app/opengraph-image.png?54361e507490551f"
-  //     }
-  //   ],
-  //   url: "https://thoughts-a-thread.vercel.app/"
-  // },
-};
+// export const metadata: Metadata = {
+//   title: {
+//     default: "Thoughts",
+//     template: "%s | Thoughts",
+//   },
+//   description: "The best place to share your thoughts and ideas!",
+//   other: {
+//     "og:title": "Thoughts",
+//     "og:description": "The best place to share your thoughts and ideas!",
+//     "og:url": "thoughts-a-thread.vercel.app",
+//     "og:image": "https://i.postimg.cc/DzvqrW8k/opengraph-image.png",
+//     "twitter:title": "Thoughts",
+//     "twitter:description": "The best place to share your thoughts and ideas!",
+//     "twitter:image": "https://i.postimg.cc/DzvqrW8k/opengraph-image.png",
+//     "twitter:card": "summary_large_image",
+//   }
+//   openGraph: {
+//     title: "Thoughts",
+//     description: "The best place to share your thoughts and ideas!",
+//     images: [
+//       {
+//         url: "https://threads-3y6k3bjyf-sabarishs-projects-ff1ef71e.vercel.app/opengraph-image.png?54361e507490551f"
+//       }
+//     ],
+//     url: "https://thoughts-a-thread.vercel.app/"
+//   },
+// };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en">
       <head>
+        <title>Thoughts</title>
+        <meta property="og:title" content="Thoughts" />
+        <meta property="og:description" content="The best place to share your thoughts and ideas!" />
+        <meta property="og:url" content="https://thoughts-a-thread.vercel.app" />
+        <meta property="og:image" content="https://i.postimg.cc/DzvqrW8k/opengraph-image.png" />
+        <meta name="twitter:title" content="Thoughts" />
+        <meta name="twitter:description" content="The best place to share your thoughts and ideas!" />
+        <meta name="twitter:image" content="https://i.postimg.cc/DzvqrW8k/opengraph-image.png" />
+        <meta name="twitter:card" content="summary_large_image" />
         <link rel="icon" href="/assets/favicon.ico" sizes="any" />
       </head>
       <body className={inter.className}>
