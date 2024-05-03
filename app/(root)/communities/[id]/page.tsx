@@ -12,8 +12,16 @@ import { fetchCommunityDetails } from "@/lib/actions/community.actions";
 import { SearchParamsProps } from "@/types";
 import { Metadata } from "next";
 
-export const metadata: Metadata = {
-  title: "Communities",
+// export const metadata: Metadata = {
+//   title: "Communities",
+// }
+
+export async function generateMetadata({ params } : { params: { id: string }}): Promise<Metadata> {
+  const communityDetails = await fetchCommunityDetails(params.id);
+  return {
+    title: `${communityDetails.name} (@${communityDetails.username})`,
+    description: `This is a community of ${communityDetails.name} with ${communityDetails.members.length} members.`
+  }
 }
 
 async function Page({ params, searchParams }: { params: { id: string }; searchParams: any }) {
