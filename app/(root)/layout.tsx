@@ -23,10 +23,10 @@ export const metadata: Metadata = {
   other: {
     "og:title": "Thoughts",
     "og:description": "The best place to share your thoughts and ideas!",
-    "og:image": "/opengraph-image.png",
+    "og:image": "https://postimg.cc/WdyFj1GX",
     "twitter:title": "Thoughts",
     "twitter:description": "The best place to share your thoughts and ideas!",
-    "twitter:image": "/opengraph-image.png",
+    "twitter:image": "https://postimg.cc/WdyFj1GX",
     "twitter:card": "summary_large_image",
   }
   // openGraph: {
