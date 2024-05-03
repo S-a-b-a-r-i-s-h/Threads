@@ -17,14 +17,22 @@ export async function generateMetadata({ params }: {params: { id: string }}): Pr
   return {
     title: `${userInfo.name} (@${userInfo.username})`,
     description: userInfo.bio,
-    openGraph: {
-      title: `${userInfo.name} (@${userInfo.username})`,
-      description: userInfo.bio,
-      images: [
-        {
-          url: userInfo.image,
-        }
-      ]
+    // openGraph: {
+    //   title: `${userInfo.name} (@${userInfo.username})`,
+    //   description: userInfo.bio,
+    //   images: [
+    //     {
+    //       url: userInfo.image,
+    //     }
+    //   ]
+    // }
+    other: {
+      "og:title": `${userInfo.name} (@${userInfo.username})`,
+      "og:description": userInfo.bio,
+      "og:image": userInfo.image,
+      "twitted:title": `${userInfo.name} (@${userInfo.username})`,
+      "twitter:description": userInfo.bio,
+      "twitter:image": userInfo.image,
     }
   }
 }

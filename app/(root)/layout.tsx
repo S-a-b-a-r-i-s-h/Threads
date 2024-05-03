@@ -20,6 +20,15 @@ export const metadata: Metadata = {
     card: "summary_large_image",
   },
   description: "The best place to share your thoughts and ideas!",
+  other: {
+    "og:title": "Thoughts",
+    "og:description": "The best place to share your thoughts and ideas!",
+    "og:image": "/opengraph-image.png",
+    "twitter:title": "Thoughts",
+    "twitter:description": "The best place to share your thoughts and ideas!",
+    "twitter:image": "/opengraph-image.png",
+    "twitter:card": "summary_large_image",
+  }
   // openGraph: {
   //   title: "Thoughts",
   //   description: "The best place to share your thoughts and ideas!",

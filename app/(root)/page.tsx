@@ -3,7 +3,19 @@ import { fetchPosts, fetchThreadById } from "@/lib/actions/thread.actions";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { SearchParamsProps } from "@/types";
 import { auth, currentUser } from "@clerk/nextjs";
+import { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+// export const metadata: Metadata = {
+//   title: {
+//     default: "Thoughts",
+//     template: "%s | Thoughts",
+//   },
+//   twitter: {
+//     card: "summary_large_image",
+//   },
+//   description: "The best place to share your thoughts and ideas!",
+// };
 
 export default async function Home({ params, searchParams }: { params: { id: string }; searchParams: SearchParamsProps }) {
   const colors = searchParams.c || 'primary';
