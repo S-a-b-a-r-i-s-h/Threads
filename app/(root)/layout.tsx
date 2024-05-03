@@ -23,6 +23,7 @@ export const metadata: Metadata = {
   other: {
     "og:title": "Thoughts",
     "og:description": "The best place to share your thoughts and ideas!",
+    "og:url": "thoughts-a-thread.vercel.app",
     "og:image": "https://i.postimg.cc/DzvqrW8k/opengraph-image.png",
     "twitter:title": "Thoughts",
     "twitter:description": "The best place to share your thoughts and ideas!",
