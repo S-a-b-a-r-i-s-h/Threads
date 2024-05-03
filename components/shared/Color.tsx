@@ -47,14 +47,14 @@ const Color = () => {
             }}
         >
         </button>
-        <button 
+        {/* <button 
             className='w-[20px] h-[20px] rounded-full gradient-four'
             onClick={() => {
                 localStorage.color = 'four'
                 handleColorFilter('four');
             }}
         >
-        </button>
+        </button> */}
     </div>
   )
 }
