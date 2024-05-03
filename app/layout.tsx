@@ -7,7 +7,7 @@ import Bottombar from "@/components/shared/Bottombar";
 import LeftSidebar from "@/components/shared/LeftSidebar";
 import RightSidebar from "@/components/shared/RightSidebar";
 import { ThemeProvider } from "@/context/ThemeProvider";
-import { Toaster } from "@/components/ui/toaster"
+import { Toaster } from "@/components/ui/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -39,11 +39,13 @@ const inter = Inter({ subsets: ["latin"] });
 //   },
 // };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
       <head>
-        <title>Thoughts</title>
+        {/* <title>Thoughts</title>
         <meta property="og:title" content="Thoughts" />
         <meta property="og:description" content="The best place to share your thoughts and ideas!" />
         <meta property="og:url" content="https://thoughts-a-thread.vercel.app" />
@@ -52,18 +54,53 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <meta name="twitter:description" content="The best place to share your thoughts and ideas!" />
         <meta name="twitter:image" content="https://i.postimg.cc/DzvqrW8k/opengraph-image.png" />
         <meta name="twitter:card" content="summary_large_image" />
-        <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+        <link rel="icon" href="/assets/favicon.ico" sizes="any" /> */}
+        <title>Thoughts</title>
+        <meta name="title" content="Thoughts" />
+        <meta
+          name="description"
+          content="The best place to share your thoughts and ideas!"
+        />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:url"
+          content="https://thoughts-a-thread.vercel.app/"
+        />
+        <meta property="og:title" content="Thoughts" />
+        <meta
+          property="og:description"
+          content="The best place to share your thoughts and ideas!"
+        />
+        <meta
+          property="og:image"
+          content="https://metatags.io/images/meta-tags.png"
+        />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta
+          property="twitter:url"
+          content="https://thoughts-a-thread.vercel.app/"
+        />
+        <meta property="twitter:title" content="Thoughts" />
+        <meta
+          property="twitter:description"
+          content="The best place to share your thoughts and ideas!"
+        />
+        <meta
+          property="twitter:image"
+          content="https://metatags.io/images/meta-tags.png"
+        />
       </head>
       <body className={inter.className}>
         <ClerkProvider>
           <ThemeProvider>
             <Topbar />
-            
+
             <main className="flex flex-row">
               <LeftSidebar />
               <section className="main-container">
                 <div className="w-full max-w-4xl">{children}</div>
-                
               </section>
 
               <RightSidebar />
