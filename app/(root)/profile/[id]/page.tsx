@@ -18,6 +18,8 @@ export async function generateMetadata({ params }: {params: { id: string }}): Pr
     title: `${userInfo.name} (@${userInfo.username})`,
     description: userInfo.bio,
     openGraph: {
+      title: `${userInfo.name} (@${userInfo.username})`,
+      description: userInfo.bio,
       images: [
         {
           url: userInfo.image,
