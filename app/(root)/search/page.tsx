@@ -13,7 +13,7 @@ import { siteMetadataConfig } from "@/constants";
 export const metadata: Metadata = {
   title: "Search",
   openGraph: {
-    title: "Search | Thoughts",
+    title: "Search",
     description: "Search for the user account you are looking for!",
     images: siteMetadataConfig.ogImage,
     url: "https://thoughts-a-thread.vercel.app"

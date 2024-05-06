@@ -11,7 +11,7 @@ export const meatadata: Metadata = {
   title: "Onboarding",
   description: "Complete your profile now, to use Thoughts.",
   openGraph: {
-    title: "Onboaring | Thoughts",
+    title: "Onboaring",
     description: "Complete your profile now, to use Thoughts.",
     images: siteMetadataConfig.ogImage,
     url: "https://thoughts-a-thread.vercel.app",

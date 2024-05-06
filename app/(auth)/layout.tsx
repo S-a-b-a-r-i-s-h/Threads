@@ -10,18 +10,18 @@ export const metadata: Metadata = {
     template: "%s | Thoughts",
   },
   description: "The best place to share your thoughts and ideas!",
-  // openGraph: {
-  //   title: "Onboaring | Thoughts",
-  //   description: "Complete your profile now, to use Thoughts.",
-  //   images: siteMetadataConfig.ogImage,
-  //   url: "https://thoughts-a-thread.vercel.app",
-  // },
-  // twitter: {
-  //   card: "summary_large_image",
-  //   title: "Onboarding | Thoughts",
-  //   description: "Complete your profile now, to use Thoughts.",
-  //   images: siteMetadataConfig.ogImage,
-  // },
+  openGraph: {
+    title: "%s | Thoughts",
+    description: "Complete your profile now, to use Thoughts.",
+    images: siteMetadataConfig.ogImage,
+    url: "https://thoughts-a-thread.vercel.app",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Onboarding | Thoughts",
+    description: "Complete your profile now, to use Thoughts.",
+    images: siteMetadataConfig.ogImage,
+  },
 };
 
 const inter = Inter({ subsets: ["latin"] });

@@ -19,7 +19,10 @@ export const metadata: Metadata = {
   },
   description: "The best place to share your thoughts and ideas!",
   openGraph: {
-    title: "Thoughts",
+    title: {
+      default: "Thoughts",
+      template: "%s | Thoughts",
+    },
     description: "The best place to share your thoughts and ideas!",
     images: siteMetadataConfig.ogImage,
     url: "https://thoughts-a-thread.vercel.app"

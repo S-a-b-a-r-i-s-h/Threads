@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   title: "Activity",
   description: "Check who replied to your thoughts!",
   openGraph: {
-    title: "Activity | Thoughts",
+    title: "Activity",
     description: "Here are your followers!",
     images: siteMetadataConfig.ogImage,
     url: "https://thoughts-a-thread.vercel.app",

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: "Communities",
   description: "Engage with your communities!",
   openGraph: {
-    title: "Communities | Thoughts",
+    title: "Communities",
     description: "Engage with your communities!",
     images: siteMetadataConfig.ogImage,
     url: "https://thoughts-a-thread.vercel.app"
