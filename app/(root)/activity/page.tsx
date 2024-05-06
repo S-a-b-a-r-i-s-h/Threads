@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     title: "Activity",
     description: "Here are your followers!",
     images: siteMetadataConfig.ogImage,
-    url: "https://thoughts-a-thread.vercel.app",
+    url: "https://thoughts-a-thread.vercel.app/activity",
   },
   twitter: {
     card: "summary_large_image",

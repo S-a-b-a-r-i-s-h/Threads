@@ -4,25 +4,25 @@ import { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "../globals.css";
 
-// export const metadata: Metadata = {
-//   title: {
-//     default: "Onboarding",
-//     template: "%s | Thoughts",
-//   },
-//   description: "The best place to share your thoughts and ideas!",
-//   openGraph: {
-//     title: "%s | Thoughts",
-//     description: "Complete your profile now, to use Thoughts.",
-//     images: siteMetadataConfig.ogImage,
-//     url: "https://thoughts-a-thread.vercel.app",
-//   },
-//   twitter: {
-//     card: "summary_large_image",
-//     title: "Onboarding | Thoughts",
-//     description: "Complete your profile now, to use Thoughts.",
-//     images: siteMetadataConfig.ogImage,
-//   },
-// };
+export const metadata: Metadata = {
+  title: {
+    default: "Onboarding",
+    template: "%s | Thoughts",
+  },
+  description: "The best place to share your thoughts and ideas!",
+  openGraph: {
+    title: "Thoughts",
+    description: "The best place to share your thoughts and ideas!",
+    images: siteMetadataConfig.ogImage,
+    url: "https://thoughts-a-thread.vercel.app",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Thoughts",
+    description: "The best place to share your thoughts and ideas!",
+    images: siteMetadataConfig.ogImage,
+  },
+};
 
 const inter = Inter({ subsets: ["latin"] });
 export default function RootLayout({
