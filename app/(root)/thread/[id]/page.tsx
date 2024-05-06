@@ -8,32 +8,40 @@ import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchThreadById } from "@/lib/actions/thread.actions";
 import { Metadata } from "next";
 
-export async function generateMetadata({ params }: { params: { id: string }}): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
   const thread = await fetchThreadById(params.id);
   return {
     title: `${thread.author.name}'s Thought`,
     description: thread.text,
-  }
+  };
 }
 
 export const revalidate = 0;
 
-async function page({ params, searchParams }: { params: { id: string }; searchParams: any }) {
-//   console.log(searchParams, params);
-console.log(searchParams.c,"id")
+async function page({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: any;
+}) {
+  //   console.log(searchParams, params);
+  console.log(searchParams.c, "id");
   if (!params.id) return null;
 
   const user = await currentUser();
   if (!user) return null;
-
-
 
   const userInfo = await fetchUser(user.id);
   if (!userInfo?.onboarded) redirect("/onboarding");
 
   const { userId: clerkId } = auth();
 
-  let mongoUser: { _id: any; };
+  let mongoUser: { _id: any };
   if (clerkId) {
     mongoUser = await fetchUser(clerkId);
   }
@@ -42,8 +50,8 @@ console.log(searchParams.c,"id")
 
   const thread = await fetchThreadById(params.id);
   const itemId = thread._id;
-  console.log(itemId, "item id")
-  console.log(JSON.stringify(itemId), "item id string")
+  console.log(itemId, "item id");
+  console.log(JSON.stringify(itemId), "item id string");
   // console.log(itemId, "thread id")
   // console.log(user.id, "user id")
 
@@ -64,6 +72,7 @@ console.log(searchParams.c,"id")
           hasupVoted={thread.upVotes.includes(mongoUser._id)}
           userId={JSON.stringify(mongoUser._id)}
           itemId={JSON.stringify(itemId)}
+          image={thread.image}
         />
       </div>
 
@@ -72,12 +81,12 @@ console.log(searchParams.c,"id")
           threadId={params.id}
           currentUserImg={user.imageUrl}
           currentUserId={JSON.stringify(userInfo._id)}
-        //   searchParams={searchParams.c}
+          //   searchParams={searchParams.c}
         />
       </div>
 
       <div className="mt-10">
-        {thread.children.map((childItem: any) => (  
+        {thread.children.map((childItem: any) => (
           <ThreadCard
             key={childItem._id}
             id={childItem._id}

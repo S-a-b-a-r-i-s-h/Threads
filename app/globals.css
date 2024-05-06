@@ -156,7 +156,7 @@
 }
 
 .account-form_image-input {
-  @apply cursor-pointer border-none bg-transparent outline-none file:text-purple-600 !important;
+  @apply cursor-pointer border-none bg-transparent outline-none file:text-blue !important;
 }
 
 .account-form_input {

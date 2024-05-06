@@ -1,6 +1,7 @@
 import { Document, model, models, Schema } from "mongoose";
 
 export interface IThread extends Document {
+  image: string;
   text: string;
   author: Schema.Types.ObjectId;
   community: Schema.Types.ObjectId;
@@ -11,6 +12,7 @@ export interface IThread extends Document {
 }
 
 const threadSchema = new Schema({
+  image: String,
   text: {
     type: String,
     required: true,

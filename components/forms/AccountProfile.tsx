@@ -1,8 +1,8 @@
 "use client";
 
 import * as z from "zod";
-import Image from "next/image";
 import { useForm } from "react-hook-form";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { ChangeEvent, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -36,9 +36,10 @@ interface Props {
     image: string;
   };
   btnTitle: string;
+  colors: string;
 }
 
-const AccountProfile = ({ user, btnTitle }: Props) => {
+const AccountProfile = ({ user, btnTitle,colors }: Props) => {
   const [files, setFiles] = useState<File[]>([]);
   const { startUpload } = useUploadThing("media");
   const router = useRouter();
@@ -78,6 +79,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
       fileReader.readAsDataURL(file);
     }
   };
+  
   // 2. Define a submit handler.
   const onSubmit = async (values: z.infer<typeof UserValidation>) => {
     const blob = values.profile_photo;
@@ -85,8 +87,10 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
     const hasImageChanged = isBase64Image(blob);
     if (hasImageChanged) {
       const imgRes = await startUpload(files);
+      console.log(files, "files")
 
       if (imgRes && imgRes[0].url) {
+        // console.log(imgRes, "imgRes")
         values.profile_photo = imgRes[0].url;
       }
     }
@@ -117,7 +121,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="profile_photo"
           render={({ field }) => (
             <FormItem className="flex items-center gap-4">
-              <FormLabel className="account-form_image-label border-purple-600">
+              <FormLabel className="account-form_image-label border-blue">
                 {field.value ? (
                   <Image
                     src={field.value}
@@ -142,7 +146,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
                   type="file"
                   accept="image/*"
                   placeholder="Add profile photo"
-                  className="account-form_image-input"
+                  className={`account-form_image-input gradient-${colors} bg-clip-text text-transparent`}
                   onChange={(e) => handleImage(e, field.onChange)}
                 />
               </FormControl>
@@ -155,11 +159,11 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="name"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col gap-3">
-              <FormLabel className="text-base-semibold text-light-2">
+              <FormLabel className={`text-base-semibold text-light-2 gradient-${colors} bg-clip-text text-transparent`}>
                 Name
               </FormLabel>
               <FormControl>
-                <Input type="text" className="account-form_input" {...field} />
+                <Input type="text" className={`account-form_input`} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -171,7 +175,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="username"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col gap-3">
-              <FormLabel className="text-base-semibold text-light-2">
+              <FormLabel className={`text-base-semibold text-light-2 gradient-${colors} bg-clip-text text-transparent inline-block`}>
                 Username
               </FormLabel>
               <FormControl>
@@ -187,7 +191,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
           name="bio"
           render={({ field }) => (
             <FormItem className="flex w-full flex-col gap-3">
-              <FormLabel className="text-base-semibold text-light-2">
+              <FormLabel className={`text-base-semibold text-light-2 gradient-${colors} bg-clip-text text-transparent inline-block`}>
                 Bio
               </FormLabel>
               <FormControl>
@@ -197,7 +201,7 @@ const AccountProfile = ({ user, btnTitle }: Props) => {
             </FormItem>
           )}
         />
-        <Button type="submit" className="bg-purple-600">
+        <Button type="submit" className={`gradient-${colors}`}>
           Submit
         </Button>
       </form>

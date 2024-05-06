@@ -1,10 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
+
+
 import { formatDateString } from "@/lib/utils";
 import DeleteThread from "../forms/DeleteThread";
 import ShareButton from "../shared/ShareButton";
 import Votes from "../shared/Votes";
+
+import { Button } from "../ui/button";
 
 interface Props {
   id: string;
@@ -34,6 +38,7 @@ interface Props {
   itemId: string;
   userId: string;
   isHome?: boolean;
+  image: string;
 }
 
 function ThreadCard({
@@ -52,8 +57,9 @@ function ThreadCard({
   itemId,
   userId,
   isHome,
+  image,
 }: Props) {
-  console.log(itemId, "threads card itemid");
+  // console.log(image, "image");
   const colors = searchParams || "primary";
   return (
     <article
@@ -96,10 +102,22 @@ function ThreadCard({
               }}
               className="w-fit"
             >
-              <h4 className="cursor-pointer text-base-semibold dark:text-light-1">
+              <h4 className="cursor-pointer text-base-semibold dark:text-light-1 mb-5">
                 {author?.name}
               </h4>
             </Link>
+
+            {/* Post image in thought */}
+
+            {!isComment && image && (<Image
+              src={image}
+              alt={author.name}
+              width={2000}
+              height={2000}
+              className="object-contain w-full rounded-xl"
+            />)}
+
+            
 
             <p className="mt-2 text-small-regular dark:text-light-2">
               {content}
@@ -107,7 +125,15 @@ function ThreadCard({
 
             <div className={`${isComment && "mb-10"} mt-5 flex flex-col gap-3`}>
               <div className="flex gap-3.5">
-                {!isComment && !isHome && (<Votes isComment itemId={itemId} userId={userId} upVotes={upVotes} hasupVoted={hasupVoted} />)}
+                {!isComment && !isHome && (
+                  <Votes
+                    isComment
+                    itemId={itemId}
+                    userId={userId}
+                    upVotes={upVotes}
+                    hasupVoted={hasupVoted}
+                  />
+                )}
                 <Link
                   href={{
                     pathname: `/thread/${id}`,
@@ -116,21 +142,23 @@ function ThreadCard({
                     },
                   }}
                 >
-                  {
-                    isHome ? (
-                      <p className={`gradient-${colors} bg-clip-text text-transparent`}>View More</p>
-                    ) : (
-                      <Image
-                        src="/assets/reply.svg"
-                        alt="heart"
-                        width={24}
-                        height={24}
-                        className="cursor-pointer object-contain"
-                      />
-                    )
-                  }
+                  {isHome ? (
+                    <p
+                      className={`gradient-${colors} bg-clip-text text-transparent`}
+                    >
+                      View More
+                    </p>
+                  ) : (
+                    <Image
+                      src="/assets/reply.svg"
+                      alt="heart"
+                      width={24}
+                      height={24}
+                      className="cursor-pointer object-contain"
+                    />
+                  )}
                 </Link>
-                {!isHome && (<ShareButton searchParams={searchParams} />)}
+                {!isHome && <ShareButton searchParams={searchParams} />}
                 {/* <Image
                   src='/assets/share.svg'
                   alt='heart'

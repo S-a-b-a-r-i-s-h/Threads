@@ -79,6 +79,7 @@ async function ThreadsTab({ currentUserId, accountId, accountType, searchParams 
           comments={thread.children}
           searchParams={searchParams}
           isHome
+          image={result.image}
         />
       ))}
     </section>

@@ -15,7 +15,6 @@ import { Metadata } from "next";
 export async function generateMetadata({ params }: {params: { id: string }}): Promise<Metadata> {
   const userInfo = await fetchUser(params.id);
   return {
-    // title: 'Profile',
     title: `${userInfo.name} (@${userInfo.username})`,
     description: userInfo.bio,
     openGraph: {
@@ -29,14 +28,6 @@ export async function generateMetadata({ params }: {params: { id: string }}): Pr
         }
       ]
     }
-    // other: {
-    //   "og:title": `${userInfo.name} (@${userInfo.username})`,
-    //   "og:description": userInfo.bio,
-    //   "og:image": userInfo.image,
-    //   "twitted:title": `${userInfo.name} (@${userInfo.username})`,
-    //   "twitter:description": userInfo.bio,
-    //   "twitter:image": userInfo.image,
-    // }
   }
 }
 

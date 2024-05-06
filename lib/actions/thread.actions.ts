@@ -54,6 +54,7 @@ export async function fetchPosts(pageNumber = 1, pageSize = 20) {
 }
 
 interface Params {
+  image: string;
   text: string;
   author: string;
   communityId: string | null;
@@ -61,6 +62,7 @@ interface Params {
 }
 
 export async function createThread({
+  image,
   text,
   author,
   communityId,
@@ -74,11 +76,13 @@ export async function createThread({
       { _id: 1 }
     );
 
+    console.log("Inside the create thought")
+
     const createdThread = await Thread.create({
       text,
       author,
       community: communityIdObject, // Assign communityId if provided, or leave it null for personal account
-      
+      image
     });
 
     // Update User model

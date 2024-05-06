@@ -61,6 +61,7 @@ export default async function Home({ params, searchParams }: { params: { id: str
                 comments={post.children}
                 searchParams={colors}
                 isHome
+                image={post.image}
                 // upVotes={thread.upVotes.length}
                 // hasupVoted={thread.upVotes.includes(mongoUser._id)}
                 // userId={JSON.stringify(mongoUser._id)}

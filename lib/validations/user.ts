@@ -6,3 +6,7 @@ export const UserValidation = z.object({
     username: z.string().min(3).max(20),
     bio: z.string().min(5).max(100),
 })
+
+export const PostImageValidation = z.object({
+    image: z.string().url().min(1),
+})

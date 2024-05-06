@@ -6,6 +6,8 @@ import { fetchUser } from "@/lib/actions/user.actions";
 import { SearchParamsProps } from "@/types";
 import { Metadata } from "next";
 
+
+
 export const metadata: Metadata = {
   title: "Create",
 }
@@ -22,7 +24,6 @@ async function Page({ searchParams }: SearchParamsProps) {
   return (
     <>
       <h1 className={`head-text gradient-${colors} bg-clip-text text-transparent inline-block`}>Create Thought</h1>
-
       <PostThread userId={userInfo._id} />
     </>
   );
