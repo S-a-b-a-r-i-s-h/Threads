@@ -20,14 +20,15 @@ export async function generateMetadata({ params }: {params: { id: string }}): Pr
     openGraph: {
       title: `${userInfo.name} (@${userInfo.username})`,
       description: userInfo.bio,
-      images: [
-        {
-          url: userInfo.image,
-          width: 1200,
-          height: 630,
-        }
-      ]
-    }
+      images: userInfo.image,
+      url: "https://thoughts-a-thread.vercel.app"
+    },
+    twitter: {
+      card: "summary_large_image",
+      title:`${userInfo.name} (@${userInfo.username})`,
+      description: userInfo.bio,
+      images: userInfo.image,
+    },
   }
 }
 

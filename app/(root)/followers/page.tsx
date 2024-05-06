@@ -1,4 +1,5 @@
 import UserCard from "@/components/cards/UserCard";
+import { siteMetadataConfig } from "@/constants";
 import { fetchFollowers, fetchUser } from "@/lib/actions/user.actions";
 import { SearchParamsProps } from "@/types";
 import { auth, currentUser } from "@clerk/nextjs";
@@ -7,7 +8,20 @@ import React from "react";
 
 export const metadata: Metadata = {
   title: "Followers",
-}
+  description: "Here are your followers!",
+  openGraph: {
+    title: "Followers | Thoughts",
+    description: "Here are your followers!",
+    images: siteMetadataConfig.ogImage,
+    url: "https://thoughts-a-thread.vercel.app"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Followers | Thoughts",
+    description: "Here are your followers!",
+    images: siteMetadataConfig.ogImage,
+  },
+};
 
 const page = async ({
   params,

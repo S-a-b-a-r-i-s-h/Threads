@@ -1,3 +1,4 @@
+import { siteMetadataConfig } from "@/constants";
 import { ClerkProvider } from "@clerk/nextjs";
 import { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -5,23 +6,22 @@ import "../globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "Thoughts",
+    default: "Onboarding",
     template: "%s | Thoughts",
+  },
+  description: "The best place to share your thoughts and ideas!",
+  openGraph: {
+    title: "Onboaring | Thoughts",
+    description: "Complete your profile now, to use Thoughts.",
+    images: siteMetadataConfig.ogImage,
+    url: "https://thoughts-a-thread.vercel.app",
   },
   twitter: {
     card: "summary_large_image",
+    title: "Onboarding | Thoughts",
+    description: "Complete your profile now, to use Thoughts.",
+    images: siteMetadataConfig.ogImage,
   },
-  description: "The best place to share your thoughts and ideas!",
-  // openGraph: {
-  //   title: "Thoughts",
-  //   description: "The best place to share your thoughts and ideas!",
-  //   images: [
-  //     {
-  //       url: "https://threads-3y6k3bjyf-sabarishs-projects-ff1ef71e.vercel.app/opengraph-image.png?54361e507490551f"
-  //     }
-  //   ],
-  //   url: "https://thoughts-a-thread.vercel.app/"
-  // },
 };
 
 const inter = Inter({ subsets: ["latin"] });

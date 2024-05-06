@@ -5,10 +5,23 @@ import AccountProfile from "@/components/forms/AccountProfile";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { Metadata } from "next";
 import { SearchParamsProps } from "@/types";
+import { siteMetadataConfig } from "@/constants";
 
 export const meatadata: Metadata = {
   title: "Onboarding",
   description: "Complete your profile now, to use Thoughts.",
+  openGraph: {
+    title: "Onboaring | Thoughts",
+    description: "Complete your profile now, to use Thoughts.",
+    images: siteMetadataConfig.ogImage,
+    url: "https://thoughts-a-thread.vercel.app",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Onboarding | Thoughts",
+    description: "Complete your profile now, to use Thoughts.",
+    images: siteMetadataConfig.ogImage,
+  },
 }
 
 async function Page({ searchParams }: SearchParamsProps) {

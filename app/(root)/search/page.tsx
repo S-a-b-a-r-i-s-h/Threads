@@ -8,9 +8,24 @@ import Pagination from "@/components/shared/Pagination";
 import { fetchUser, fetchUsers } from "@/lib/actions/user.actions";
 import { SearchParamsProps } from "@/types";
 import { Metadata } from "next";
+import { siteMetadataConfig } from "@/constants";
 
 export const metadata: Metadata = {
   title: "Search",
+  openGraph: {
+    title: "Search | Thoughts",
+    description: "Search for the user account you are looking for!",
+    images: siteMetadataConfig.ogImage,
+    url: "https://thoughts-a-thread.vercel.app"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Search | Thoughts",
+    description:
+      "Search for the user account you are looking for!",
+    images: siteMetadataConfig.ogImage,
+  },
 }
 
 async function Page({ searchParams }: SearchParamsProps) {

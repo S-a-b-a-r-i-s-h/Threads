@@ -8,9 +8,23 @@ import CommunityCard from "@/components/cards/CommunityCard";
 import { fetchUser } from "@/lib/actions/user.actions";
 import { fetchCommunities } from "@/lib/actions/community.actions";
 import { Metadata } from "next";
+import { siteMetadataConfig } from "@/constants";
 
 export const metadata: Metadata = {
   title: "Communities",
+  description: "Engage with your communities!",
+  openGraph: {
+    title: "Communities | Thoughts",
+    description: "Engage with your communities!",
+    images: siteMetadataConfig.ogImage,
+    url: "https://thoughts-a-thread.vercel.app"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Communitites | Thoughts",
+    description: "Engage with your communities!",
+    images: siteMetadataConfig.ogImage,
+  },
 }
 
 async function Page({

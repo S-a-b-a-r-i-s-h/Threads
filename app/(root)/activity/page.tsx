@@ -6,9 +6,23 @@ import { redirect } from "next/navigation";
 import { fetchUser, getActivity } from "@/lib/actions/user.actions";
 import { SearchParamsProps } from "@/types";
 import { Metadata } from "next";
+import { siteMetadataConfig } from "@/constants";
 
 export const metadata: Metadata = {
   title: "Activity",
+  description: "Check who replied to your thoughts!",
+  openGraph: {
+    title: "Activity | Thoughts",
+    description: "Here are your followers!",
+    images: siteMetadataConfig.ogImage,
+    url: "https://thoughts-a-thread.vercel.app",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Activity | Thoughts",
+    description: "Check who replied to your thoughts!",
+    images: siteMetadataConfig.ogImage,
+  },
 }
 
 async function Page({ searchParams }: SearchParamsProps) {

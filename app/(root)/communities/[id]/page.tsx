@@ -16,15 +16,37 @@ import { Metadata } from "next";
 //   title: "Communities",
 // }
 
-export async function generateMetadata({ params } : { params: { id: string }}): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { id: string };
+}): Promise<Metadata> {
   const communityDetails = await fetchCommunityDetails(params.id);
   return {
     title: `${communityDetails.name} (@${communityDetails.username})`,
-    description: `This is a community of ${communityDetails.name} with ${communityDetails.members.length} members.`
-  }
+    description: `This is a community of ${communityDetails.name} with ${communityDetails.members.length} members.`,
+    openGraph: {
+      title: `${communityDetails.name} (@${communityDetails.username})`,
+      description: `This is a community of ${communityDetails.name} with ${communityDetails.members.length} members.`,
+      images: communityDetails.image,
+      url: "https://thoughts-a-thread.vercel.app",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${communityDetails.name} (@${communityDetails.username})`,
+      description: `This is a community of ${communityDetails.name} with ${communityDetails.members.length} members.`,
+      images: communityDetails.image,
+    },
+  };
 }
 
-async function Page({ params, searchParams }: { params: { id: string }; searchParams: any }) {
+async function Page({
+  params,
+  searchParams,
+}: {
+  params: { id: string };
+  searchParams: any;
+}) {
   const user = await currentUser();
   if (!user) return null;
 
@@ -39,26 +61,26 @@ async function Page({ params, searchParams }: { params: { id: string }; searchPa
         username={communityDetails.username}
         imgUrl={communityDetails.image}
         bio={communityDetails.bio}
-        type='Community'
+        type="Community"
         searchParams={searchParams.c}
       />
 
-      <div className='mt-9'>
-        <Tabs defaultValue='threads' className='w-full'>
-          <TabsList className='tab'>
+      <div className="mt-9">
+        <Tabs defaultValue="threads" className="w-full">
+          <TabsList className="tab">
             {communityTabs.map((tab) => (
-              <TabsTrigger key={tab.label} value={tab.value} className='tab'>
+              <TabsTrigger key={tab.label} value={tab.value} className="tab">
                 <Image
                   src={tab.icon}
                   alt={tab.label}
                   width={24}
                   height={24}
-                  className='object-contain'
+                  className="object-contain"
                 />
-                <p className='max-sm:hidden'>{tab.label}</p>
+                <p className="max-sm:hidden">{tab.label}</p>
 
                 {tab.label === "Thoughts" && (
-                  <p className='ml-1 rounded-sm bg-light-4 px-2 py-1 !text-tiny-medium text-light-2'>
+                  <p className="ml-1 rounded-sm bg-light-4 px-2 py-1 !text-tiny-medium text-light-2">
                     {communityDetails.threads.length}
                   </p>
                 )}
@@ -66,18 +88,18 @@ async function Page({ params, searchParams }: { params: { id: string }; searchPa
             ))}
           </TabsList>
 
-          <TabsContent value='threads' className='w-full text-light-1'>
+          <TabsContent value="threads" className="w-full text-light-1">
             {/* @ts-ignore */}
             <ThreadsTab
               currentUserId={user.id}
               accountId={communityDetails._id}
-              accountType='Community'
+              accountType="Community"
               searchParams={searchParams.c}
             />
           </TabsContent>
 
-          <TabsContent value='members' className='mt-9 w-full text-light-1'>
-            <section className='mt-9 flex flex-col gap-10'>
+          <TabsContent value="members" className="mt-9 w-full text-light-1">
+            <section className="mt-9 flex flex-col gap-10">
               {communityDetails.members.map((member: any) => (
                 <UserCard
                   key={member.id}
@@ -85,7 +107,7 @@ async function Page({ params, searchParams }: { params: { id: string }; searchPa
                   name={member.name}
                   username={member.username}
                   imgUrl={member.image}
-                  personType='User'
+                  personType="User"
                 />
               ))}
             </section>
