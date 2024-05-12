@@ -36,9 +36,8 @@ export async function fetchFollowers(userId: string) {
       select: "name image id",
     });
 
-    return user
-  }
-  catch (error: any) {
+    return user;
+  } catch (error: any) {
     throw new Error(`Failed to fetch followers: ${error.message}`);
   }
 }
@@ -59,8 +58,8 @@ export async function updateUser({
   bio,
   image,
   path,
-  // followers = [],
-}: Params): Promise<void> {
+}: // followers = [],
+Params): Promise<void> {
   try {
     connectToDB();
     await User.findOneAndUpdate(
@@ -216,7 +215,9 @@ export async function followUser(params: followUserParams) {
     connectToDB();
 
     const { itemId, userId, hasFollowed, path } = params;
-    console.log("Comes into followUser actions" + itemId + userId + hasFollowed)
+    console.log(
+      "Comes into followUser actions" + itemId + userId + hasFollowed
+    );
 
     let updateQuery = {};
 

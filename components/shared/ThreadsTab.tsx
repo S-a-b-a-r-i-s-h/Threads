@@ -46,6 +46,7 @@ async function ThreadsTab({ currentUserId, accountId, accountType, searchParams 
     result = await fetchCommunityPosts(accountId);
   } else {
     result = await fetchUserPosts(accountId);
+    // console.log(result, "result")
   }
 
   if (!result) {
@@ -79,7 +80,7 @@ async function ThreadsTab({ currentUserId, accountId, accountType, searchParams 
           comments={thread.children}
           searchParams={searchParams}
           isHome
-          image={result.image}
+          image={thread.image}
         />
       ))}
     </section>

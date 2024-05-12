@@ -108,6 +108,7 @@ function ThreadCard({
             </Link>
 
             {/* Post image in thought */}
+            
 
             {!isComment && image && (<Image
               src={image}
